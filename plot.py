@@ -74,7 +74,6 @@ def generate_plots(data, conference_list):
         ax.set_ylim(ymin=0)
         ax.set_ylabel("Acceptance Rate (%)")
         ax.set_xlabel("Year")
-        plt.show()
         plt.savefig(f"{file_path}/plots/{conference_name}.png", bbox_inches="tight")
         plt.clf()
 
