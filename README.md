@@ -1,7 +1,7 @@
 # Systems Conference Acceptance Rates
 
 This repo contains the acceptance rates of the common systems conferences.
-Information from the conferences are collected from wherever this information can be retrieved (typically this is a message from the Chairs). Information includes all submissions (short and long papers) and all accepted papers (also short and long papers).
+Information from the conferences are collected from wherever this information can be retrieved, which are typically available in the full proceedings (most commonly under a section in the beginning for the message from the Program Chairs). Information includes all submissions (short and long papers) except abstracts and all accepted papers (also short and long papers).
 
 ## Storage Systems
 
