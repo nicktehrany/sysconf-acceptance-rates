@@ -3,6 +3,7 @@
 import os
 import glob
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 plt.rc('font', size=12)          # controls default text sizes
 plt.rc('axes', titlesize=12)     # fontsize of the axes title
@@ -54,6 +55,7 @@ def generate_plots(data, conference_list):
     for conference_group in conference_list:
         fig, ax = plt.subplots()
 
+        handles = []
         for key, conf in data.items():
             if conf['Conference'] == conference_group:
                 years = []
@@ -64,13 +66,14 @@ def generate_plots(data, conference_list):
                     
                 zipped = sorted(zip(years, acceptance_rates))
                 years, acceptance_rates = zip(*zipped)
-                ax.plot(years, acceptance_rates, markersize=4, marker=markers[iter], color=colors[iter], label=key)
+                handles.append(plt.Line2D([], [], color=colors[iter], marker=markers[iter], label=key))
+                ax.plot(years, acceptance_rates, markersize=6, marker=markers[iter], color=colors[iter])
                 iter+=1
 
         fig.tight_layout()
         ax.grid(which='major', linestyle='dashed', linewidth='1')
         ax.set_axisbelow(True)
-        ax.legend(loc='best')
+        ax.legend(loc='best', handles=handles)
         ax.set_ylim(ymin=0)
         ax.set_ylabel("Acceptance Rate (%)")
         ax.set_xlabel("Year")
