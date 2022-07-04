@@ -45,17 +45,17 @@ def parse_data(file_path, conference_list):
                         data[file]['Years'][year] = dict()
                         data[file]['Years'][year]['Submissions'] = info[1]
                         data[file]['Years'][year]['Accepted'] = info[2]
-                        data[file]['Years'][year]['Acceptance Rate'] = int(info[1])/int(info[2])
+                        data[file]['Years'][year]['Acceptance Rate'] = int(info[2])/int(info[1])*100
 
 def generate_plots(data, conference_list):
     markers = ["x", "o", "d", "^", ".", ",", "v", "^", "<", ">", "1", "2", "3"]
     colors = ["green", "blue", "red", "black", "brown", "gray", "olive", "cyan", "purple", "khaki", "lime", "peru", "orangered"]
     iter = 0
-    for conference_name in conference_list:
+    for conference_group in conference_list:
         fig, ax = plt.subplots()
 
         for key, conf in data.items():
-            if conf['Conference'] == conference_name:
+            if conf['Conference'] == conference_group:
                 years = []
                 acceptance_rates = []
                 for year, stats in conf['Years'].items():
@@ -74,7 +74,7 @@ def generate_plots(data, conference_list):
         ax.set_ylim(ymin=0)
         ax.set_ylabel("Acceptance Rate (%)")
         ax.set_xlabel("Year")
-        plt.savefig(f"{file_path}/plots/{conference_name}.png", bbox_inches="tight")
+        plt.savefig(f"{file_path}/plots/{conference_group}.png", bbox_inches="tight")
         plt.clf()
 
 if __name__ == "__main__":
