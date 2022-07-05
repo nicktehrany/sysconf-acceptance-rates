@@ -40,7 +40,7 @@ def parse_data(file_path, conference_list):
                     info = line.split()
                     if len(info) != 3:
                         print(f"MISSING: {dir}/{file} is missing information.\
- Has to be in the format of: \n{bcolors.BLUE}<Year> <# Submissions> <# Accepted>\n{bcolors.BOLD}{bcolors.WARNING}Skipping entry {' '.join(map(str, info))} in {dir}/{file}{bcolors.ENDC}")
+ {bcolors.BOLD}{bcolors.WARNING}Skipping entry {' '.join(map(str, info))} in {dir}/{file}{bcolors.ENDC}")
                     else:
                         year = info[0]
                         data[file]['Years'][year] = dict()
@@ -78,6 +78,7 @@ def generate_plots(data, conference_list):
         ax.set_ylabel("Acceptance Rate (%)")
         ax.set_xlabel("Year")
         plt.savefig(f"{file_path}/plots/{conference_group}.png", bbox_inches="tight")
+        print(f"{bcolors.SUCCESS}Generated plot for conference group: {conference_group}")
         plt.clf()
 
 if __name__ == "__main__":
