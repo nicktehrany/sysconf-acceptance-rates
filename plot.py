@@ -78,7 +78,7 @@ def generate_plots(data, conference_list):
         ax.set_ylabel("Acceptance Rate (%)")
         ax.set_xlabel("Year")
         plt.savefig(f"{file_path}/plots/{conference_group}.png", bbox_inches="tight")
-        print(f"{bcolors.SUCCESS}Generated plot for conference group: {conference_group}")
+        print(f"{bcolors.SUCCESS}Generated plot for conference group: {conference_group}{bcolors.ENDC}")
         plt.clf()
 
 if __name__ == "__main__":
